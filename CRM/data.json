@@ -1,0 +1,24 @@
+[
+    {
+        "id": "USR001",
+        "nombre": "Valentin",
+        "apellido": "Gomez Farias Sanchez",
+        "email": "valentin.r.gfs@gmail.com",
+        "telefono": "622346825",
+        "empresa": "EUDE",
+        "direccion": "Calle de Nu\u00f1ez Morgado 11",
+        "notas": "Admin",
+        "fecha de registro": "20/06/2025"
+    },
+    {
+        "id": "USR002",
+        "nombre": "Carlos",
+        "apellido": "Viera Estar\u00e1s",
+        "email": "carlos.viera@eude.es",
+        "telefono": "915931545",
+        "empresa": "EUDE",
+        "direccion": "Arturo Soria 245",
+        "notas": "Director EUDE",
+        "fecha de registro": "20/06/2025"
+    }
+]
