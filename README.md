@@ -1,7 +1,7 @@
 # Projects
 Hi everyone!!!, hope you're doing well.
 
-Welcome to this repository where I'll publish all my projects realted to coding, data analyst, data science and ML.
+Welcome to my project repository where I'll publish all my projects realted to coding, data analyst, data science and ML.
 
 I'll share them with a little more detail on the side for anyone who wants to use it or view the way I developped my projects against yours.
 
