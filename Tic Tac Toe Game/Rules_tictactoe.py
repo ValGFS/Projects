@@ -1,8 +1,12 @@
+import random
+
 #Clase del juego
 class TicTacToe ():
-    def __init__(self):
+    def __init__(self, vs_cpu=False, cpu_symbol='O' ):
         self.board = [''] * 9   #Crear el tablero
         self.current_player = 'X'
+        self.vs_cpu = vs_cpu
+        self.cpu_symbol = cpu_symbol
 
     #Mostrar el tablero
     def show_board (self):
@@ -28,6 +32,12 @@ class TicTacToe ():
         index = position - 1
         self.board[index] = self.current_player
 
+    def cpu_move (self):
+        print (f'\n Turno de tu tio {self.cpu_symbol}')
+        empty_positions = [i + 1 for i, value in enumerate(self.board) if value == '']
+        position = random.choice(empty_positions)
+        self.player_move(position)
+
     #Función para definir el ganador
     def winner (self):
         winning_lines = [
@@ -52,18 +62,21 @@ class TicTacToe ():
         self.show_board()
 
         while True:
-            try:
-                player_input = input (f'\nJugador {self.current_player}, elige una posicion del 1 al 9:').strip()
-                position = int(player_input)
-            except ValueError:
-                print (f'Posicion no valida, escribe un numero del 1  al 9')
-                continue
+            if self.vs_cpu and self.current_player == self.cpu_symbol:
+                self.cpu_move()
+            else:
+                try:
+                    player_input = input (f'\nJugador {self.current_player}, elige una posicion del 1 al 9:').strip()
+                    position = int(player_input)
+                except ValueError:
+                    print (f'Posicion no valida, escribe un numero del 1  al 9')
+                    continue
 
-            if not self.valid_move(position):
-                print ('\nMovimiento invalido. Vuelve a intentar')
-                continue
+                if not self.valid_move(position):
+                    print ('\nMovimiento invalido. Vuelve a intentar')
+                    continue
 
-            self.player_move (position)
+                self.player_move (position)
             self.show_board ()
 
             if self.winner ():
@@ -88,20 +101,30 @@ def instructions ():
 def game_menu():
     while True:
         print ('\n---Tic Tac Toe---\nSeleccione una opcion\n')
-        print ('1. Nueva Partida')
-        print ('2. Instrucciones')
-        print ('3. Salir')
+        print ('1. Partida entre 2 jugadores')
+        print ('2. Jugar contra CPU')
+        print ('3. Instrucciones')
+        print ('4. Salir')
 
         option = input ('\nSeleccione una opcion: ')
         if option == '1':
             game = TicTacToe()
             game.play()
         elif option == '2':
-            instructions()
+            choice = input ('\n¿Escoge tu simbolo X o O?: ').strip().upper()
+            player_symbol = choice if choice in ['X', 'O'] else 'X'
+            cpu_symbol = 'O' if player_symbol == 'X' else 'X'
+            game = TicTacToe(vs_cpu=True, cpu_symbol=cpu_symbol)
+            game.current_player = 'X'
+            game.play()
+
         elif option == '3':
+            instructions()
+        elif option == '4':
             print ('\nSaliendo del juego. ¡Hasta luego!')
             break
         else:
             print ('\nOpcion no valida, Intenta nuevamente')
             continue
 
+game_menu()
