@@ -1,7 +1,8 @@
 import random
 
 #Clase del juego
-class TicTacToe ():
+class main_game ():
+
     def __init__(self, vs_cpu=False, cpu_symbol='O' ):
         self.board = [''] * 9   #Crear el tablero
         self.current_player = 'X'
@@ -59,7 +60,8 @@ class TicTacToe ():
     def play (self):
         self.board = [''] * 9
         self.current_player ='X'
-        self.show_board()
+        #self.show_board()
+
 
         while True:
             if self.vs_cpu and self.current_player == self.cpu_symbol:
@@ -108,13 +110,13 @@ def game_menu():
 
         option = input ('\nSeleccione una opcion: ')
         if option == '1':
-            game = TicTacToe()
+            game = main_game()
             game.play()
         elif option == '2':
             choice = input ('\n¿Escoge tu simbolo X o O?: ').strip().upper()
             player_symbol = choice if choice in ['X', 'O'] else 'X'
             cpu_symbol = 'O' if player_symbol == 'X' else 'X'
-            game = TicTacToe(vs_cpu=True, cpu_symbol=cpu_symbol)
+            game = main_game(vs_cpu=True, cpu_symbol=cpu_symbol)
             game.current_player = 'X'
             game.play()
 
@@ -126,5 +128,3 @@ def game_menu():
         else:
             print ('\nOpcion no valida, Intenta nuevamente')
             continue
-
-game_menu()
