@@ -63,7 +63,7 @@ class TicTacToe ():
                 print ('\nMovimiento invalido. Vuelve a intentar')
                 continue
 
-            self.player_move (position,)
+            self.player_move (position)
             self.show_board ()
 
             if self.winner ():
@@ -71,7 +71,7 @@ class TicTacToe ():
                 break
 
             if self.draw ():
-                print (f'\nEmpate.\nNo hay mas movimientos. Juego finalizado.')
+                print ('\nEmpate.\nNo hay mas movimientos. Juego finalizado.')
                 break
 
             self.switch_player()
